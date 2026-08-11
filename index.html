@@ -1,94 +1,36 @@
-<html><head>
+<!doctype html>
+<html>
+<head>
   <title>Site</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-  body{
-    margin: 0;
-    background: linear-gradient(180deg, #e0f2fe 0%, #e8e6fb 100%);
-    min-height: 100vh;
-    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  .hero{
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #0ea5e9, #6366f1);
-    color: white;
-    padding: 56px 20px;
-    text-align: center;
-    border-radius: 18px;
-    margin: 24px auto;
-    max-width: 900px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.15);
-  }
-  .hero h1{
-    margin: 0 0 12px;
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 600;
-    font-size: clamp(28px, 4vw, 44px);
-    letter-spacing: -0.02em;
-  }
-  .hero p{
-    margin: 0;
-    font-family: 'Fraunces', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(16px, 2vw, 20px);
-    opacity: 0.95;
-  }
-  .empty-card{
-    max-width: 900px;
-    margin: 18px auto 0;
-    padding: 18px 20px;
-    border: 1px solid rgba(15, 23, 42, .12);
-    border-radius: 14px;
-    background: #fff;
-    color: #0f172a;
-    text-align: center;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-  .empty-badge{
-    display:inline-block;
-    margin-bottom: 10px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(99, 102, 241, .12);
-    color: #4f46e5;
-    font-weight: 600;
-    font-size: 13px;
-  }
-  img{
-    display: block;
-    max-width: 520px;
-    width: 100%;
-    height: auto;
-    margin: 32px auto 0;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.15);
-  }
-  h1{
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 600;
-    color: #0f172a;
-    text-align: center;
-    max-width: 900px;
-    margin: 48px auto 20px;
-    font-size: clamp(22px, 3.2vw, 30px);
-  }
-  iframe{
-    display: block;
-    margin: 0 auto 56px;
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.15);
-  }
-</style>
-</head><body><div class="hero">
-  <h1>Welcome to my website</h1>
-  <p>hello.</p>
-</div>
-  <p>Fish...</p>
-  <img src="640x427-Salmon-Sockeye-NOAAFisheries.png" alt="Fish.">
-  <h1>Tic tac my toes</h1>
-  <iframe src="https://eg155.github.io/tic-tac-toe.html" width="560" height="530" style="border:0;" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-</body></html>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    img { max-width: 100%; height: auto; }
+    iframe { border: 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .center { text-align: center; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="center">
+      <h1>Welcome to my website</h1>
+      <p>hello.</p>
+    </div>
+
+    <p>Fish...</p>
+    <img src="640x427-Salmon-Sockeye-NOAAFisheries.png" alt="Fish.">
+
+    <h1>Tic tac my toes</h1>
+    <div class="center">
+      <iframe
+        src="https://eg155.github.io/tic-tac-toe.html"
+        width="560"
+        height="530"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+  </div>
+</body>
+</html>
