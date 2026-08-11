@@ -6,19 +6,6 @@
   <title>Site</title>
   <style>
     :root {
-      --bg1: #dbeafe;
-      --bg2: #ede9fe;
-      --bg3: #c4b5fd;
-      --card: rgba(255, 255, 255, 0.9);
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: rgba(255, 255, 255, 0.45);
-      --shadow: 0 12px 40px rgba(37, 99, 235, 0.14);
-      --button-bg: #111827;
-      --button-text: #ffffff;
-    }
-
-    body.dark {
       --bg1: #0f172a;
       --bg2: #1e1b4b;
       --bg3: #312e81;
@@ -31,11 +18,22 @@
       --button-text: #111827;
     }
 
+    body.light {
+      --bg1: #dbeafe;
+      --bg2: #ede9fe;
+      --bg3: #c4b5fd;
+      --card: rgba(255, 255, 255, 0.9);
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: rgba(255, 255, 255, 0.45);
+      --shadow: 0 12px 40px rgba(37, 99, 235, 0.14);
+      --button-bg: #111827;
+      --button-text: #ffffff;
+    }
+
     * { box-sizing: border-box; }
 
-    html, body {
-      min-height: 100%;
-    }
+    html, body { min-height: 100%; }
 
     body {
       margin: 0;
@@ -146,24 +144,16 @@
     }
 
     @media (max-width: 640px) {
-      .container {
-        padding: 16px 14px 40px;
-      }
-
-      .hero, .section {
-        padding: 20px;
-      }
-
-      .topbar {
-        margin-bottom: 14px;
-      }
+      .container { padding: 16px 14px 40px; }
+      .hero, .section { padding: 20px; }
+      .topbar { margin-bottom: 14px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="topbar">
-      <button class="toggle" id="themeToggle" type="button">Dark mode</button>
+      <button class="toggle" id="themeToggle" type="button">Light mode</button>
     </div>
 
     <section class="hero">
@@ -173,7 +163,7 @@
 
     <section class="section">
       <h2>Fish</h2>
-      <p>A nice fish image.</p>
+      <p>random fish image.</p>
       <img class="fish-image" src="640x427-Salmon-Sockeye-NOAAFisheries.png" alt="Fish.">
     </section>
 
@@ -194,11 +184,11 @@
     const body = document.body;
 
     function updateButton() {
-      toggle.textContent = body.classList.contains('dark') ? 'Light mode' : 'Dark mode';
+      toggle.textContent = body.classList.contains('light') ? 'Dark mode' : 'Light mode';
     }
 
     toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
+      body.classList.toggle('light');
       updateButton();
     });
 
