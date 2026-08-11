@@ -1,36 +1,208 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Site</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-    img { max-width: 100%; height: auto; }
-    iframe { border: 0; }
-    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-    .center { text-align: center; }
+    :root {
+      --bg1: #dbeafe;
+      --bg2: #ede9fe;
+      --bg3: #c4b5fd;
+      --card: rgba(255, 255, 255, 0.9);
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: rgba(255, 255, 255, 0.45);
+      --shadow: 0 12px 40px rgba(37, 99, 235, 0.14);
+      --button-bg: #111827;
+      --button-text: #ffffff;
+    }
+
+    body.dark {
+      --bg1: #0f172a;
+      --bg2: #1e1b4b;
+      --bg3: #312e81;
+      --card: rgba(17, 24, 39, 0.9);
+      --text: #f9fafb;
+      --muted: #cbd5e1;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      --button-bg: #f9fafb;
+      --button-text: #111827;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.45), transparent 35%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.45), transparent 30%),
+        linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      background-attachment: fixed;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .toggle {
+      border: 0;
+      background: var(--button-bg);
+      color: var(--button-text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .toggle:hover { transform: translateY(-1px); opacity: 0.95; }
+
+    .hero, .section {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero {
+      padding: 48px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+    }
+
+    .section p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .fish-image {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    .iframe-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 560 / 530;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 16px 14px 40px;
+      }
+
+      .hero, .section {
+        padding: 20px;
+      }
+
+      .topbar {
+        margin-bottom: 14px;
+      }
+    }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div class="center">
+    <div class="topbar">
+      <button class="toggle" id="themeToggle" type="button">Dark mode</button>
+    </div>
+
+    <section class="hero">
       <h1>Welcome to my website</h1>
-      <p>hello.</p>
-    </div>
+      <p class="subtitle">hello.</p>
+    </section>
 
-    <p>Fish...</p>
-    <img src="640x427-Salmon-Sockeye-NOAAFisheries.png" alt="Fish.">
+    <section class="section">
+      <h2>Fish</h2>
+      <p>A nice fish image.</p>
+      <img class="fish-image" src="640x427-Salmon-Sockeye-NOAAFisheries.png" alt="Fish.">
+    </section>
 
-    <h1>Tic tac my toes</h1>
-    <div class="center">
-      <iframe
-        src="https://eg155.github.io/tic-tac-toe.html"
-        width="560"
-        height="530"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin">
-      </iframe>
-    </div>
+    <section class="section">
+      <h2>Tic tac my toes</h2>
+      <div class="iframe-wrap">
+        <iframe
+          src="https://eg155.github.io/tic-tac-toe.html"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </section>
   </div>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    function updateButton() {
+      toggle.textContent = body.classList.contains('dark') ? 'Light mode' : 'Dark mode';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      updateButton();
+    });
+
+    updateButton();
+  </script>
 </body>
 </html>
