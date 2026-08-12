@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moto X3M — Games</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="site-logo" href="../index.html">◈ GAMES</a>
+  <nav class="site-nav" id="siteNav"></nav>
+</header>
+
+<div class="game-page-header fadein">
+  <a class="back" href="../index.html">← All Games</a>
+  <h2>MOTO X3M</h2>
+</div>
+
+<div class="game-title-bar fadein">
+  <div class="dot"></div>
+  <span>MOTO X3M</span>
+</div>
+
+<div class="iframe-wrapper fadein">
+  <iframe src="https://games.cdn.famobi.com/html5games/m/moto-x3m/v100/?fg_domain=play.famobi.com&fg_aid=A-O9JYH&fg_uid=442157bb-0a48-4e9b-9fa6-e1503f16e8e3&fg_pid=4e5f1429-8e41-4902-8f28-f0662edb1836&fg_beat=535&original_ref=https%3A%2F%2Fplay.famobi.com%2Fmoto-x3m%2FA-O9JYH" allowfullscreen scrolling="no"></iframe>
+</div>
+
+<div class="game-controls fadein">
+  <a href="repulsio.html" style="text-decoration:none">
+    <button>← Repuls.io</button>
+  </a>
+  <button onclick="goFullscreen()">⛶ Fullscreen</button>
+  <a href="slope.html" style="text-decoration:none">
+    <button>Slope →</button>
+  </a>
+</div>
+
+<footer>PRESS F FOR FULLSCREEN &nbsp;|&nbsp; USE ARROW BUTTONS TO BROWSE GAMES</footer>
+
+<script src="../games.js"></script>
+<script>
+  // Build top nav
+  const siteNav = document.getElementById('siteNav');
+  GAMES.slice(0, 6).forEach(g => {
+    const a = document.createElement('a');
+    a.href = g.id + '.html';
+    a.textContent = g.label;
+    if (g.id === 'motox3m') a.classList.add('active');
+    siteNav.appendChild(a);
+  });
+
+  function goFullscreen() {
+    const iframe = document.querySelector('iframe');
+    if (iframe) (iframe.requestFullscreen || iframe.webkitRequestFullscreen || (() => {})).call(iframe);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === 'f') goFullscreen();
+  });
+</script>
+</body>
+</html>
