@@ -127,24 +127,6 @@
       background: #fff;
     }
 
-    .iframe-placeholder {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 40%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.18), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65));
-    }
-
-    body.light .iframe-placeholder {
-      background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.10), transparent 40%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55));
-    }
-
     iframe {
       width: 100%;
       height: 100%;
@@ -181,6 +163,34 @@
     .fs-btn:hover { transform: translateY(-1px); opacity: 0.95; }
 
     /* Play button (center) */
+    .iframe-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+
+      /* Nice dark gradient placeholder */
+      background:
+        radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.40), transparent 48%),
+        radial-gradient(circle at 82% 10%, rgba(168, 85, 247, 0.30), transparent 45%),
+        radial-gradient(circle at 55% 90%, rgba(99, 102, 241, 0.38), transparent 55%),
+        linear-gradient(135deg, rgba(2, 6, 23, 0.90), rgba(30, 27, 75, 0.82));
+
+      /* subtle depth */
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    /* Optional: slightly nicer in light mode too */
+    body.light .iframe-placeholder {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.22), transparent 48%),
+        radial-gradient(circle at 82% 10%, rgba(168, 85, 247, 0.18), transparent 45%),
+        radial-gradient(circle at 55% 90%, rgba(99, 102, 241, 0.22), transparent 55%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(237, 233, 254, 0.90));
+
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+    }
+
     .play-btn {
       border: 0;
       border-radius: 999px;
@@ -192,12 +202,14 @@
       color: #fff;
       box-shadow: 0 18px 50px rgba(0,0,0,0.25);
       backdrop-filter: blur(6px);
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease, background 0.3s ease;
       user-select: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       font-size: 16px;
+      position: relative;
+      z-index: 2;
     }
 
     body.light .play-btn {
@@ -358,7 +370,7 @@
       btn.addEventListener('click', () => {
         const wrap = btn.closest('.iframe-wrap');
         const iframe = wrap ? wrap.querySelector('iframe') : null;
-        if (!iframe) return; // nothing loaded yet
+        if (!iframe) return;
 
         if (iframe.requestFullscreen) {
           iframe.requestFullscreen();
